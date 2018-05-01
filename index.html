@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ANAVI Light Demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="lib/jquery-3.3.1.slim.min.js"></script>
+  <script src="lib/popper.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/mqttws31.min.js" type="text/javascript"></script>
+  <script src="js/demo.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="pageConnect" class="container">
+  <h2>ANAVI Light Demo</h2>
+
+    <div id="alertConnect" class="alert alert-danger d-none">
+      <strong>Enter machine ID!</strong>
+    </div>
+
+    <div class="form-group">
+      <label for="host">Host:</label>
+      <input type="input" class="form-control" id="host" placeholder="iot.eclipse.org" name="host">
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Websocker port:</label>
+      <input type="input" class="form-control" id="port" placeholder="443" name="port">
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Websocker path:</label>
+      <input type="input" class="form-control" id="path" placeholder="&sol;ws" name="path">
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Workgroup:</label>
+      <input type="input" class="form-control" id="workgroup" placeholder="workgroup" name="workgroup">
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Machine ID:</label>
+      <input type="input" class="form-control" id="machineid" placeholder="" name="machineid">
+    </div>
+
+    <button id="buttonConnect" name="buttonConnect" type="button" class="btn btn-default">Connect</button>
+
+</div>
+
+<div id="pageColorPicker" class="container d-none">
+  <h2>ANAVI Light Demo</h2>
+  <div id="txtInfo" class="d-none">
+  <p>Connected to <span id="txtHost" class="txt"></span> on port <span id="txtPort" class="txt"></span></p>
+  <p>Machine ID: <span id="txtMachineId" class="txt"></span></p>
+  </div>
+  <p>Select color: </p>
+  <div class="row">
+    <button id="buttonColorMax" class="buttonColor">MAX</button>
+    <button id="buttonColorRed" class="buttonColor"> &nbsp; </button>
+    <button id="buttonColorGreen" class="buttonColor"> &nbsp; </button>
+    <button id="buttonColorBlue" class="buttonColor"> &nbsp; </button>
+    <button id="buttonColorOff" class="buttonColor">OFF</button>
+  </div>
+
+  <div class="row">
+    <button id="buttonDisconnect" name="buttonDisconnect" type="button" class="btn btn-default">Disconnect</button>
+  </div>
+</div>
+
+</body>
+</html>
