@@ -33,6 +33,10 @@
   background-color: #000000;
 }
 
+#buttonConnect {
+  margin-top: 10pt;
+}
+
 .txt {
   font-weight: bold;
 }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="lib/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/fontawesome-all.min.css">
   <script src="lib/jquery-3.3.1.slim.min.js"></script>
   <script src="lib/popper.min.js"></script>
   <script src="lib/bootstrap.min.js"></script>
@@ -26,27 +27,46 @@
       <input type="input" class="form-control" id="machineid" placeholder="" name="machineid">
     </div>
 
-    <div class="form-group">
-      <label for="host">Host:</label>
-      <input type="input" class="form-control" id="host" placeholder="iot.eclipse.org" name="host">
+    <div id="advanced">
+      <div class="card">
+        <div class="card-header" id="headingAdvanced">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAdvanced" aria-expanded="true" aria-controls="collapseAdvanced">
+              <i class="fa fa-cog"></i> Advanced
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseAdvanced" class="collapse" aria-labelledby="headingAdvanced" data-parent="#advanced">
+          <div class="card-body">
+
+            <div class="form-group">
+              <label for="host">Host:</label>
+              <input type="input" class="form-control" id="host" placeholder="iot.eclipse.org" name="host">
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Websocket port:</label>
+              <input type="input" class="form-control" id="port" placeholder="443" name="port">
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Websocket path:</label>
+              <input type="input" class="form-control" id="path" placeholder="&sol;ws" name="path">
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Workgroup:</label>
+              <input type="input" class="form-control" id="workgroup" placeholder="workgroup" name="workgroup">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="form-group">
-      <label for="pwd">Websocket port:</label>
-      <input type="input" class="form-control" id="port" placeholder="443" name="port">
-    </div>
-
-    <div class="form-group">
-      <label for="pwd">Websocket path:</label>
-      <input type="input" class="form-control" id="path" placeholder="&sol;ws" name="path">
-    </div>
-
-    <div class="form-group">
-      <label for="pwd">Workgroup:</label>
-      <input type="input" class="form-control" id="workgroup" placeholder="workgroup" name="workgroup">
-    </div>
-
-    <button id="buttonConnect" name="buttonConnect" type="button" class="btn btn-block btn-success">Connect</button>
+    <button id="buttonConnect" name="buttonConnect" type="button" class="btn btn-block btn-success"><i class="fa fa-plug"></i> Connect</button>
 
 </div>
 
@@ -66,7 +86,7 @@
   </div>
 
   <div class="row">
-    <button id="buttonDisconnect" name="buttonDisconnect" type="button" class="btn btn-default">Disconnect</button>
+    <button id="buttonDisconnect" name="buttonDisconnect" type="button" class="btn btn-block btn-danger"><i class="fa fa-ban"></i> Disconnect</button>
   </div>
 </div>
 
