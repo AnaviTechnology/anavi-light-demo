@@ -109,6 +109,17 @@ $(document).ready(function() {
          $("#pageConnect").removeClass('d-none');
     });
 
+    $('#buttonColorCustom').on('change', function (e) {
+        e.preventDefault();
+        console.log(e.target.value);
+        if(e.target.value.length == 7){
+            var r = parseInt(e.target.value.substr(1,2),16);
+            var g = parseInt(e.target.value.substr(3,2),16);
+            var b = parseInt(e.target.value.substr(5,2),16);
+            changeColor(r,g,b);
+        }
+    });
+
     $('#buttonColorMax').on('click', function (e) {
          e.preventDefault();
          changeColor(255, 255, 255);
