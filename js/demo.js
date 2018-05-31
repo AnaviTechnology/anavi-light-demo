@@ -18,6 +18,7 @@ function onConnect() {
   $('#txtHost').text(host);
   $('#txtPort').text(port);
   $('#txtMachineId').text(machineid);
+  localStorage['machineid'] = machineid;
 }
 
 // called when the client loses its connection
@@ -33,6 +34,14 @@ function onMessageArrived(message) {
 }
 
 $(document).ready(function() {
+
+    if (window.location.hash) {
+        machineid = window.location.hash.substring(1);
+        window.location.hash = "";
+    } else {
+        machineid = localStorage['machineid'];
+    }
+    $('#machineid').val(machineid);
 
     $('#buttonConnect').on('click', function (e) {
          e.preventDefault();
