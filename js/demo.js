@@ -9,8 +9,11 @@ function changeColor(red, green, blue)
 {
   var payload = '{ "color": {"r": '+ red + ', "g":'+ green +', "b":' + blue + ' } }'
   message = new Paho.MQTT.Message(payload);
-  message.destinationName = machineid+"/action/rgbled";
+  message.destinationName = "cmnd/"+machineid+"/color";
   mqttClient.send(message);
+  messageBackwardCompat = new Paho.MQTT.Message(payload);
+  messageBackwardCompat.destinationName = machineid+"/action/rgbled";
+  mqttClient.send(messageBackwardCompat);
 }
 
 function onConnect() {
