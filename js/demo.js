@@ -5,6 +5,9 @@ var path = "/ws";
 var workgroup = "workgroup";
 var machineid = "";
 
+var topicTemperature = "";
+var topicHumidity = "";
+
 function changeColor(red, green, blue)
 {
   var payload = '{ "color": {"r": '+ red + ', "g":'+ green +', "b":' + blue + ' } }'
@@ -22,6 +25,14 @@ function onConnect() {
   $('#txtPort').text(port);
   $('#txtMachineId').text(machineid);
   localStorage['machineid'] = machineid;
+
+  var topicPrefix = workgroup+"/"+machineid+"/air/";
+  topicTemperature = topicPrefix+"temperature";
+  console.log("Subscribing to topic: "+topicTemperature);
+  mqttClient.subscribe(topicTemperature);
+  topicHumidity = topicPrefix+"humidity";
+  console.log("Subscribing to topic: "+topicHumidity);
+  mqttClient.subscribe(topicHumidity);
 }
 
 // called when the client loses its connection
@@ -34,6 +45,19 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.payloadString);
+  try {
+    var data = JSON.parse(message.payloadString);
+
+    if (topicTemperature == message.destinationName) {
+      $('#txtTemperature').text("Temperature: "+data.temperature.toFixed(2)+"C");
+    }
+
+    if (topicHumidity == message.destinationName) {
+      $('#txtHumidity').text("Humidity: "+data.humidity.toFixed(0)+"%");
+    }
+  } catch (e) {
+    console.log("Malformed data");
+  }
 }
 
 $(document).ready(function() {

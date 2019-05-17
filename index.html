@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>ANAVI Light Demo</title>
+  <title>ANAVI Demo</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="lib/bootstrap.min.css">
@@ -16,7 +16,7 @@
 <body>
 
 <div id="pageConnect" class="container">
-  <h2>ANAVI Light Demo</h2>
+  <h2>ANAVI Demo</h2>
 
     <div id="alertConnect" class="alert alert-danger d-none">
       <strong>Enter machine ID!</strong>
@@ -71,10 +71,12 @@
 </div>
 
 <div id="pageColorPicker" class="container d-none">
-  <h2>ANAVI Light Demo</h2>
+  <h2>ANAVI Demo</h2>
   <div id="txtInfo" class="d-none">
   <p>Connected to <span id="txtHost" class="txt"></span> on port <span id="txtPort" class="txt"></span></p>
   <p>Machine ID: <span id="txtMachineId" class="txt"></span></p>
+  <p id="txtTemperature"></p>
+  <p id="txtHumidity"></p>
   </div>
   <p>Select color: <input type="color" id="buttonColorCustom" /></p>
   <div class="row">
