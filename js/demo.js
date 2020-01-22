@@ -8,9 +8,9 @@ var machineid = "";
 var topicTemperature = "";
 var topicHumidity = "";
 
-function changeColor(red, green, blue)
+function changeColor(red, green, blue, effect = "solid")
 {
-  var payload = '{ "effect":"solid", "color": {"r": '+ red + ', "g":'+ green +', "b":' + blue + ' } }'
+  var payload = '{ "effect":"' + effect + '", "color": {"r": '+ red + ', "g":'+ green +', "b":' + blue + ' } }'
   message = new Paho.MQTT.Message(payload);
   message.destinationName = "cmnd/"+machineid+"/color";
   mqttClient.send(message);
@@ -174,6 +174,11 @@ $(document).ready(function() {
     $('#buttonColorBlue').on('click', function (e) {
          e.preventDefault();
          changeColor(0, 0, 255);
+    });
+
+    $('#buttonColorRainbow').on('click', function (e) {
+         e.preventDefault();
+         changeColor(255, 255, 255, "rainbow");
     });
 
     $('#buttonColorOff').on('click', function (e) {
