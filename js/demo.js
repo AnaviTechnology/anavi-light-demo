@@ -10,13 +10,22 @@ var topicHumidity = "";
 
 function changeColor(red, green, blue)
 {
-  var payload = '{ "color": {"r": '+ red + ', "g":'+ green +', "b":' + blue + ' } }'
+  var payload = '{ "effect":"solid", "color": {"r": '+ red + ', "g":'+ green +', "b":' + blue + ' } }'
   message = new Paho.MQTT.Message(payload);
   message.destinationName = "cmnd/"+machineid+"/color";
   mqttClient.send(message);
   messageBackwardCompat = new Paho.MQTT.Message(payload);
   messageBackwardCompat.destinationName = machineid+"/action/rgbled";
   mqttClient.send(messageBackwardCompat);
+
+  // Send a couple of message for demonstrating ANAVI Miracle Controller
+  miracleLed1 = new Paho.MQTT.Message(payload);
+  miracleLed1.destinationName = "cmnd/"+machineid+"/led1/color";
+  mqttClient.send(miracleLed1);
+
+  miracleLed2 = new Paho.MQTT.Message(payload);
+  miracleLed2.destinationName = "cmnd/"+machineid+"/led2/color";
+  mqttClient.send(miracleLed2);
 }
 
 function onConnect() {
