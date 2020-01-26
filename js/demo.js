@@ -1,7 +1,7 @@
 var mqttClient;
-var host = "iot.eclipse.org";
+var host = "mqtt.eclipse.org";
 var port = 443;
-var path = "/ws";
+var path = "/mqtt";
 var workgroup = "workgroup";
 var machineid = "";
 
@@ -84,7 +84,7 @@ $(document).ready(function() {
          host = $('#host').val();
          if (0 == host.length)
          {
-           host = "iot.eclipse.org";
+           host = "mqtt.eclipse.org";
          }
 
          port = $('#port').val();
@@ -102,7 +102,7 @@ $(document).ready(function() {
          path = $('#path').val();
          if (0 == path.length)
          {
-           path = "/ws";
+           path = "/mqtt";
          }
 
          machineid = $('#machineid').val();
