@@ -7,6 +7,8 @@ var machineid = "";
 
 var topicTemperature = "";
 var topicHumidity = "";
+var topicAirConductivity = "";
+var topicAirQuality = "";
 
 function changeColor(red, green, blue, effect = "solid")
 {
@@ -35,13 +37,19 @@ function onConnect() {
   $('#txtMachineId').text(machineid);
   localStorage['machineid'] = machineid;
 
-  var topicPrefix = workgroup+"/"+machineid+"/air/";
-  topicTemperature = topicPrefix+"temperature";
+  var topicPrefix = workgroup+"/"+machineid+"/";
+  topicTemperature = topicPrefix+"air/temperature";
   console.log("Subscribing to topic: "+topicTemperature);
   mqttClient.subscribe(topicTemperature);
-  topicHumidity = topicPrefix+"humidity";
+  topicHumidity = topicPrefix+"air/humidity";
   console.log("Subscribing to topic: "+topicHumidity);
   mqttClient.subscribe(topicHumidity);
+  topicAirConductivity = topicPrefix+"AirConductivity";
+  console.log("Subscribing to topic: "+topicAirConductivity);
+  mqttClient.subscribe(topicAirConductivity);
+  topicAirQuality = topicPrefix+"AirQuality";
+  console.log("Subscribing to topic: "+topicAirQuality);
+  mqttClient.subscribe(topicAirQuality);
 }
 
 // called when the client loses its connection
@@ -64,6 +72,15 @@ function onMessageArrived(message) {
     if (topicHumidity == message.destinationName) {
       $('#txtHumidity').text("Humidity: "+data.humidity.toFixed(0)+"%");
     }
+
+    if (topicAirConductivity == message.destinationName) {
+      $('#txtAirConductivity').text("Air Conductivity: "+data.Conductivity.toFixed(0)+"%");
+    }
+
+    if (topicAirQuality == message.destinationName) {
+      $('#txtAirQuality').text("Air Quality: "+data.Quality);
+    }
+
   } catch (e) {
     console.log("Malformed data");
   }
